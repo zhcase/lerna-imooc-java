@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE hr SYSTEM  "hr.dtd">
-<!--人力资源管理系统-->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hr SYSTEM "hr.dtd"><!--人力资源管理系统-->
 <hr>
     <employee no="3309">
         <name>张三</name>
@@ -18,6 +17,24 @@
         <department>
             <dname>会计部</dname>
             <address>xx大厦-B103</address>
+        </department>
+    </employee>
+    <employee no="3311">
+        <name>李铁柱</name>
+        <salary>3600</salary>
+        <department>
+            <dname>人事部</dname>
+            <address>xxx大厦-B105</address>
+        </department>
+    </employee>
+
+    <employee no="3311">
+        <name>李铁柱</name>
+        <age>37</age>
+        <salary>3600</salary>
+        <department>
+            <dname>人事部</dname>
+            <address>xxx大厦-B105</address>
         </department>
     </employee>
 </hr>
