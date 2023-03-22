@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="main" style="width: 600px;height: 600px;"></div>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+<script>
+    $.ajax({url:"./rt",type:"get",dataType:"json",success:(json)=>{
+            var myChart = echarts.init(document.getElementById('main'));
+            // 绘制图表
+            myChart.setOption({
+                title: {
+                    text: '请求流量分析统计'
+                },
+                tooltip: {},
+                xAxis: {
+                    data: json.timeList
+                },
+                yAxis: {},
+                series: [
+                    {
+                        name: '访问量',
+                        type: 'line',
+                        data: json.valueList
+                    }
+                ]
+            });
+        }})
+    // 基于准备好的dom，初始化echarts实例
+
+</script>
+</body>
+</html>

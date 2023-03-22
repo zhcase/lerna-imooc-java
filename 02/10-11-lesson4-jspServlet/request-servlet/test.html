@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="topic">
+
+    </div>
+    <hr>
+    <input type="radio" name="tm" id="huey"  value="0" />
+    <label for="huey">近光灯</label>
+    <input type="radio" name="tm" id="ylight" value="1" />
+    <label for="ylight">远光灯</label>
+    <input type="radio" name="tm" id="dewey" value="3" />
+    <label for="dewey">远近光灯</label>
+    <input type="radio" name="tm" id="width" value="2" />
+    <label for="width">示宽灯</label>
+
+</body>
+<script>
+    let lightArrs=[["请打开前照灯","进入照明良好道路上行驶","夜间与机动车会车","夜间同方向近距离跟车行驶","夜间通过有信号灯路口"],["进入照明不良路段行驶"],["夜间在路边临时停车"],["夜间超越前方车辆","夜间通过急弯","夜间通过拱桥","夜间通过坡路","夜间通过人心横道"]];
+
+    function  getLightTopic(){
+        let arrs=[...lightArrs[0],...lightArrs[1],...lightArrs[2],...lightArrs[3]];
+        console.log(arrs)
+        return arrs[Math.round(Math.random()*11)];
+    }
+    document.getElementById("topic").innerHTML=getLightTopic();
+
+    setInterval(()=>{
+        let obj=document.getElementsByName("tm");
+        let tm=document.getElementById("topic").innerHTML;
+        let name="";
+        let item="";
+        for(let i=0;i<obj.length;i++){
+            // console.log(obj[i].checked)
+            if(obj[i].checked){
+                console.log(obj[i])
+                item=obj[i].value;
+                name=obj[i].name;
+            }
+        }
+        console.log(lightArrs[Number(item)])
+        console.log(name)
+        console.log(tm)
+        if(lightArrs[Number(item)].includes(tm)){
+         alert("正确")
+            document.getElementById("topic").innerHTML=getLightTopic();
+
+        }else{
+            alert("错误")
+        }
+    },5000)
+
+</script>
+</html>
