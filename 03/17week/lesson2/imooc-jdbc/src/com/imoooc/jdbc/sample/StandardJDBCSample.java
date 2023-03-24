@@ -37,8 +37,6 @@ public class StandardJDBCSample {
             e.printStackTrace();
         }finally {
             try {
-
-
             if(conn!=null&&conn.isClosed()==false) {
 //        5.关闭连接 释放资源
                 conn.close();
