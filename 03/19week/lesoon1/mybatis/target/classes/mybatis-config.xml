@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration >
+<environments default="dev">
+    <environment id="dev">
+<!--        采用JDBC方式针对数据库事务进行commit -->
+        <transactionManager type="JDBC"/>
+        <dataSource type="POOLED">
+            <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="url" value="jdbc:mysql://localhost:3306/babytun?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=GMT"/>
+            <property name="username" value="root"/>
+            <property name="password" value="12345678"/>
+        </dataSource>
+    </environment>
+<!--    生产环境mysql配置-->
+    <environment id="prd">
+        <!--        采用JDBC方式针对数据库事物进行commit -->
+        <transactionManager type="JDBC"/>
+        <dataSource type="POOLED">
+            <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="url" value="jdbc:mysql://localhost:3306/babytun?serverTimezone=UTC&amp;useSSL=false&amp;useUnicode=true&amp;characteEncoding=UTF-8&amp;serveTimezone=Asia"/>
+            <property name="username" value="root"/>
+            <property name="password" value="12345678"/>
+        </dataSource>
+    </environment>
+</environments>
+</configuration>
