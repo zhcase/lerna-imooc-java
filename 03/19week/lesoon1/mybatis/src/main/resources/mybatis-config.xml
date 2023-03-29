@@ -3,6 +3,21 @@
         PUBLIC "-//mybatis//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration >
+    <settings>
+<!--        驼峰命名转换-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="cacheEnabled" value="true"/>
+
+    </settings>
+<!--    启用Pagehelper分页插件-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+<!--            设置数据库类型-->
+            <property name="helperDialect" value="mysql"/>
+<!--            分页合理化-->
+            <property name="reasonable" value="true"/>
+        </plugin>
+    </plugins>
 <environments default="dev">
     <environment id="dev">
 <!--        采用JDBC方式针对数据库事务进行commit -->
@@ -18,12 +33,20 @@
     <environment id="prd">
         <!--        采用JDBC方式针对数据库事物进行commit -->
         <transactionManager type="JDBC"/>
-        <dataSource type="POOLED">
-            <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-            <property name="url" value="jdbc:mysql://localhost:3306/babytun?serverTimezone=UTC&amp;useSSL=false&amp;useUnicode=true&amp;characteEncoding=UTF-8&amp;serveTimezone=Asia"/>
+<!--        <dataSource type="POOLED">-->
+        <dataSource type="com.imooc.mybatis.datasource.C3P0DataSourceFactory">
+            <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/babytun?serverTimezone=UTC&amp;useSSL=false&amp;useUnicode=true&amp;characteEncoding=UTF-8&amp;serveTimezone=Asia"/>
             <property name="username" value="root"/>
             <property name="password" value="12345678"/>
+            <property name="maxPoolSize" value="20"/>
+            <property name="minPoolSize" value="5"/>
+            <property name="initialPoolSize" value="5"/>
         </dataSource>
     </environment>
 </environments>
+    <mappers>
+        <mapper resource="mappers/goods.xml" />
+        <mapper resource="mappers/goods_detail.xml"/>
+    </mappers>
 </configuration>
