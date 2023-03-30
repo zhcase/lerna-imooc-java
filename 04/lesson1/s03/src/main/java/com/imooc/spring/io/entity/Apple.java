@@ -1,4 +1,4 @@
-package com.imooc.spring.ioc.entity;
+package com.imooc.spring.io.entity;
 
 public class Apple {
     private String title;
