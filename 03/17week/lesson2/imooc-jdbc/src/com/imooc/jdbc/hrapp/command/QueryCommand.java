@@ -1,6 +1,7 @@
 package com.imooc.jdbc.hrapp.command;
 
 import java.sql.*;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class QueryCommand implements Command {
@@ -30,6 +31,11 @@ public class QueryCommand implements Command {
                 Float salary = rs.getFloat("salary");
                 String dname = rs.getString("dname");
                 System.out.println(dname + "-" + eno + "-" + ename + "-" + salary);
+
+                Optional.ofNullable(dname)
+                        .filter(l->l.length()>3)
+                        .orElse(null);
+
 
             }
             //5.关闭链接释放资源
