@@ -35,10 +35,10 @@ public class StandardJDBCSample {
             try {
 
 
-                if (conn != null && !conn.isClosed()) {
-//        5.关闭连接 释放资源
+                if (conn != null) {
+                    conn.isClosed();
+                }//        5.关闭连接 释放资源
 //                conn.close();
-                }
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
