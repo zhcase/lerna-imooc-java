@@ -1,5 +1,6 @@
 package com.imooc.mall.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.imooc.mall.common.ApiRestResponse;
 import com.imooc.mall.common.Constant;
 import com.imooc.mall.exception.ImoocMailExceptionEnum;
@@ -11,7 +12,6 @@ import com.imooc.mall.service.ProductService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -75,11 +75,12 @@ public class ProductAdminController {
         }
         return effectiveURI;
     }
+
     @ApiOperation("后台更新商品")
     @PostMapping("admin/product/update")
-    public  ApiRestResponse updateProduct(@Valid  @RequestBody UpdateProductRequest updateProductRequest){
-       Product  product=new Product();
-        BeanUtils.copyProperties(updateProductRequest,product);
+    public ApiRestResponse updateProduct(@Valid @RequestBody UpdateProductRequest updateProductRequest) {
+        Product product = new Product();
+        BeanUtils.copyProperties(updateProductRequest, product);
         try {
             productService.update(product);
         } catch (ImoocMallException e) {
@@ -87,15 +88,30 @@ public class ProductAdminController {
         }
         return ApiRestResponse.success();
     }
+
     @ApiOperation("后台删除商品")
     @PostMapping("admin/product/delete")
-    public  ApiRestResponse deleteProduct(@RequestParam Integer id){
+    public ApiRestResponse deleteProduct(@RequestParam Integer id) {
         try {
             productService.delete(id);
         } catch (ImoocMallException e) {
             throw new RuntimeException(e);
         }
         return ApiRestResponse.success();
+    }
+
+    @ApiOperation("后台批量上下架")
+    @PostMapping("/admin/product/batchUpdateSellStatus")
+    public ApiRestResponse batchUpdateSellStatus(@RequestParam Integer[] ids, @RequestParam Integer sellStatus) {
+        productService.batchUpdateSellStatus(ids, sellStatus);
+        return ApiRestResponse.success();
+    }
+
+    @ApiOperation("后台商品列表")
+    @PostMapping("/admin/product/list")
+    public ApiRestResponse list(@RequestParam Integer pageNum, @RequestParam Integer pageSize) {
+        PageInfo pageInfo = productService.listForAdmin(pageNum, pageSize);
+        return ApiRestResponse.success(pageInfo);
     }
 
 
