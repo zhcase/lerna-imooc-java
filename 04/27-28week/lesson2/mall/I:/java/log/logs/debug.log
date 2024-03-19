@@ -1,0 +1,6 @@
+[00:25:21:368] [DEBUG] - org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1005) - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@bd4dc25, started on Tue Apr 04 22:13:09 CST 2023
+[00:25:21:375] [DEBUG] - org.springframework.core.env.PropertySourcesPropertyResolver.logKeyFound(PropertySourcesPropertyResolver.java:115) - Found key 'spring.liveBeansView.mbeanDomain' in PropertySource 'systemProperties' with value of type String
+[00:25:21:376] [DEBUG] - org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.stop(DefaultLifecycleProcessor.java:369) - Stopping beans in phase 2147483647
+[00:25:21:376] [DEBUG] - org.springframework.context.support.DefaultLifecycleProcessor.lambda$doStop$2(DefaultLifecycleProcessor.java:242) - Bean 'documentationPluginsBootstrapper' completed its stop procedure
+[00:25:21:377] [DEBUG] - org.springframework.jmx.export.MBeanExporter.destroy(MBeanExporter.java:452) - Unregistering JMX-exposed beans on shutdown
+[00:25:21:377] [DEBUG] - org.springframework.jmx.support.MBeanRegistrationSupport.unregisterBeans(MBeanRegistrationSupport.java:186) - Unregistering JMX-exposed beans
